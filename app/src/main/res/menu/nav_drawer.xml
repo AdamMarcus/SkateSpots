@@ -2,11 +2,11 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <!--If three dot menu at the top right menu is desired-->
+   <!-- If three dot menu at the top right menu is desired
         <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:title="@string/action_settings"
         app:showAsAction="never">
-    </item>
+    </item>-->
 </menu>

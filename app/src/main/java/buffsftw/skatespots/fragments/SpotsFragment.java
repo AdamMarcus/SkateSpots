@@ -1,4 +1,4 @@
-package buffsftw.skatespots;
+package buffsftw.skatespots.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -9,11 +9,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
 import com.example.buffsftw.skatespots.R;
+import android.app.ListFragment;
+import android.widget.ListAdapter;
 
-
-import java.util.List;
 
 /**
  * A fragment representing a list of Items.
@@ -22,7 +21,10 @@ import java.util.List;
  * interface.
  */
 
+import buffsftw.skatespots.MySpotsRecyclerViewAdapter;
 import buffsftw.skatespots.skateSpots;
+
+import static com.example.buffsftw.skatespots.R.*;
 
 public class SpotsFragment extends Fragment{
 
@@ -36,11 +38,15 @@ public class SpotsFragment extends Fragment{
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-  public SpotsFragment()
-    {
-
+  public SpotsFragment() {
     }
 
+
+    // TODO: Customize parameter initialization
+    @SuppressWarnings("unused")
+    public static SpotsFragment newInstance() {
+        return newInstance(4);
+    }
 
     // TODO: Customize parameter initialization
     @SuppressWarnings("unused")
@@ -51,6 +57,8 @@ public class SpotsFragment extends Fragment{
         fragment.setArguments(args);
         return fragment;
     }
+
+
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,7 +72,7 @@ public class SpotsFragment extends Fragment{
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_spots_list, container, false);
+        View view = inflater.inflate(layout.fragment_spots_list, container, false);
 
         // Set the adapter
         if (view instanceof RecyclerView) {
@@ -77,8 +85,7 @@ public class SpotsFragment extends Fragment{
             }
             recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(skateSpots.ITEMS, mListener));
         }
-        return view;
-    }
+
 
 
     @Override
@@ -97,6 +104,7 @@ public class SpotsFragment extends Fragment{
         super.onDetach();
         mListener = null;
     }
+
 
 
 

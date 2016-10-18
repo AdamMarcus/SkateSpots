@@ -1,4 +1,4 @@
-package buffsftw.skatespots;
+package buffsftw.skatespots.fragments;
 
 import android.content.Context;
 import android.net.Uri;

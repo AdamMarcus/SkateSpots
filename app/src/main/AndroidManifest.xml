@@ -36,7 +36,7 @@
             android:value="@string/google_maps_key" />
 
         <activity
-            android:name="buffsftw.skatespots.navDrawer"
+            android:name="buffsftw.skatespots.mainNavDrawer"
             android:label="@string/title_activity_nav_drawer"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>

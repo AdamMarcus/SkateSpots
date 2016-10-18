@@ -4,14 +4,11 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.content.ContextCompat;
-import android.view.View;
 import android.support.design.widget.NavigationView;
+import android.support.v4.app.ListFragment;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
@@ -19,13 +16,20 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
 
-public class navDrawer extends AppCompatActivity
-        implements profile.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback{
-    public SpotsFragment.OnListFragmentInteractionListener mListener;
+import java.lang.reflect.Constructor;
+
+import buffsftw.skatespots.fragments.SpotsFragment;
+import buffsftw.skatespots.fragments.mapsFragment;
+import buffsftw.skatespots.fragments.profile;
+
+import static buffsftw.skatespots.fragments.SpotsFragment.*;
+
+public class mainNavDrawer extends AppCompatActivity
+        implements profile.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
+    public OnListFragmentInteractionListener mListener;
     public int REQUEST_LOC = 200;
     public String[] perms = {"android.permission.ACCESS_FINE_LOCATION"};
 
@@ -109,29 +113,42 @@ public class navDrawer extends AppCompatActivity
         Class fragmentClass = null;
         if (id == R.id.nav_map) {
             fragmentClass = mapsFragment.class;
-            setTitle("Map");
+            setTitle("@string/Map");
             requestLocationPermission();
-        } else if (id == R.id.nav_spot_list) {
-            fragmentClass = SpotsFragment.class;
-            setTitle("Spots");
-        } else if (id == R.id.nav_profile) {
+        }
+        else if (id == R.id.nav_spot_list) {
+            fragmentClass = ListFragment.class;
+            setTitle("@string/Spots");
+        }
+
+        else if (id == R.id.nav_profile) {
             fragmentClass = profile.class;
-            setTitle("Profile");
+            setTitle("@string/Profile");
         } else if (id == R.id.nav_manage) {
             fragmentClass = profile.class;
-            setTitle("Profile");
+            setTitle("@string/Profile");
         } else if (id == R.id.nav_settings) {
             fragmentClass = profile.class;
-            setTitle("Settings");
+            setTitle("@string/Settings");
         } else if (id == R.id.nav_login) {
             fragmentClass = profile.class;
-            setTitle("Login");
+            setTitle("@string/Login");
         }
-        try {
+        if (id == R.id.nav_spot_list) {
+            try{
+            fragment = (Fragment) fragmentClass.newInstance();}
+            catch (Exception e) {
+                e.printStackTrace();
+            }
+            }
+
+        else{try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
+        }
+
 
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
@@ -145,8 +162,13 @@ public class navDrawer extends AppCompatActivity
     public void onFragmentInteraction(Uri uri){
         //you can leave it empty
     }
+
     public void onArticleSelected(int position){
 
+    }
+
+    public void onListFragmentInteraction(skateSpots.Spots spots){
+        //you can leave it empty
     }
 
 

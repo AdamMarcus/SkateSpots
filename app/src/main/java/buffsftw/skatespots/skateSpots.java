@@ -20,24 +20,26 @@ public class skateSpots {
      */
     public static final List<Spots> ITEMS = new ArrayList<Spots>();
 
+/*
+    public static final Map<String, Spots> ITEM_MAP = new HashMap<Spots>();
+*/
 
     private static final int COUNT = 24;
-/**
- static {
- // Add some sample items.
- for (int i = 0; i <= COUNT; i++)
- ITEMS[i] = new createSpots(String name, picture, );
 
- }
- }**/
-    /**
+    public void asd (int num) {
+        // Add some sample items.
+        for (int i = 1; i <= COUNT; i++) {
+            addItem(createSpots(i));
+        }}
+
      private static void addItem(Spots spot) {
      ITEMS.add(spot);
+/*         ITEM_MAP.put(spot.id, spot);*/
      }
 
-     private static skateSpots createSpots(int position) {
-     return new skateSpots kl;
-     }**/
+     private static Spots createSpots(int position) {
+         return new Spots(String.valueOf(position), "Name" + position, "get picture by id", "Name" + position + "details", 5, 40.0150, -105.2705);
+     }
 
     private static String makeDetails(int position) {
         StringBuilder builder = new StringBuilder();
@@ -51,51 +53,52 @@ public class skateSpots {
     /**
      * A class for Skate Spots
      */
-    public class Spots {
+    public static class Spots {
+        public final String id;
         public String name;
         private String picture;
         public String details;
-        private byte rating;
-        private short lat;
-        private short lon;
+        private int rating;
+        private double lat;
+        private double lon;
 
 
-        public Spots() {
-        }
+ /*       public Spots() {
+        }*/
 
-        public Spots createSpots(String name, String picture, String details, byte rating, short lat, short lon)
+        public Spots(String id, String name, String picture, String details, int rating, double lat, double lon)
         {
+            this.id = id;
             this.name = name;
             this.picture = picture;
             this.details = details;
             this.rating = rating;
             this.lat = lat;
             this.lon = lon;
-            return this;
         }
 
         public String getName() {
-            return this.name;
+            return name;
         }
 
         public String getPicture() {
-            return this.picture;
+            return picture;
         }
 
         public String getDetails() {
-            return this.details;
+            return details;
         }
 
-        public byte getRating() {
-            return this.rating;
+        public int getRating() {
+            return rating;
         }
 
-        public int getLat() {
-            return this.lat;
+        public double getLat() {
+            return lat;
         }
 
-        public int getLon() {
-            return this.lon;
+        public double getLon() {
+            return lon;
         }
     }
 

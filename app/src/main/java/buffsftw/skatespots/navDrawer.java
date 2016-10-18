@@ -19,6 +19,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
 
@@ -36,27 +37,36 @@ public class navDrawer extends AppCompatActivity
         setContentView(R.layout.activity_nav_drawer);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
+        //Create null fragment and then default it to Maps
         Fragment fragment = null;
         Class fragmentClass = null;
         fragmentClass = mapsFragment.class;
+        //Display fragment
         try {
             fragment = (Fragment) fragmentClass.newInstance();
         } catch (Exception e) {
             e.printStackTrace();
         }
-
+        //
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
                 this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+
+
+        setTitle("Map");
         drawer.addDrawerListener(toggle);
         toggle.syncState();
 
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+
+
+       NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+
+//        TextView drawer_header = (TextView) navigationView.findViewById(R.id.drawerHeaderTitle);
+//        drawer_header.setText("title");
     }
 
     @Override
@@ -82,7 +92,6 @@ public class navDrawer extends AppCompatActivity
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
-
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
             return true;
@@ -100,17 +109,23 @@ public class navDrawer extends AppCompatActivity
         Class fragmentClass = null;
         if (id == R.id.nav_map) {
             fragmentClass = mapsFragment.class;
+            setTitle("Map");
             requestLocationPermission();
+        } else if (id == R.id.nav_spot_list) {
+            fragmentClass = SpotsFragment.class;
+            setTitle("Spots");
         } else if (id == R.id.nav_profile) {
             fragmentClass = profile.class;
-        } else if (id == R.id.nav_slideshow) {
-
+            setTitle("Profile");
         } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
-
+            fragmentClass = profile.class;
+            setTitle("Profile");
+        } else if (id == R.id.nav_settings) {
+            fragmentClass = profile.class;
+            setTitle("Settings");
+        } else if (id == R.id.nav_login) {
+            fragmentClass = profile.class;
+            setTitle("Login");
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance();

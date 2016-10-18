@@ -36,14 +36,17 @@ public class mapsFragment extends Fragment implements OnMapReadyCallback  {
 
         return v;
     }
-
+    //Function that is called when the Map is ready to be displayed
     @Override
     public void onMapReady(GoogleMap googleMap) {
+        //Check if location permission was accepted and activate location if true
         if (checkSelfPermission(this.getContext(), Manifest.permission.ACCESS_FINE_LOCATION)== PackageManager.PERMISSION_GRANTED){
-        googleMap.setMyLocationEnabled(true);}
+            googleMap.setMyLocationEnabled(true);
+        }
         googleMap.getUiSettings().setZoomControlsEnabled(true);
-        googleMap.addMarker(new MarkerOptions().position(new LatLng(105, 40)));
-        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(105, 40), 10));
+        //googleMap.addMarker(new MarkerOptions().position(new LatLng(40.0150, -105.2705)));
+        //Defaults map to the center of Boulder according to the Lat and Long
+        googleMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(40.0150, -105.2705), 13));
     }
 
     @Override

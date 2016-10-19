@@ -14,10 +14,6 @@ Description:
 	Users will engage with the app by documenting a spot they know about, submitting it, and earning a new spot in return. The spots the skater is earning are spots they have not listed themselves and spots they have not received previously that have been listed by other users. This would motivate users to list more and more locations, driving the production of a comprehensive map of spots.
 
 Vision Statement:
-	(no template)
-	To help people find what they are looking for.
-
-	(following template of slides)
 	For skaters who struggle finding new spots to skate, the “Skate Spot” app is an app that creates and connects skaters to a comprehensive map of currently undocumented spots to skate. Unlike hearing about spots from other skaters or finding them yourself, our product allows skaters to simply refer to the cooperatively created map to find new spots the may have never known about otherwise.
 
 Motivation:

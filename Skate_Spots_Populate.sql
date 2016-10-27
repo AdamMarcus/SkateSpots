@@ -47,11 +47,16 @@ CREATE TABLE user_spot_junction (
 INSERT INTO users VALUES (1, "adam.awesome", "Adam", "csci3308", "adau3486@colorado.edu", 5);
 INSERT INTO users VALUES (2, "evan", "Evan", "csci3308" , "evyi6056@colorado.edu" , 5);
 INSERT INTO users VALUES (3, "coolcarrie", "Carrie", "clubsports", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (4, "coolcarrie", "Fatin", "csci3308", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (5, "coolcarrie", "Jack", "csci3308", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (6, "coolcarrie", "Sterling", "csci3308", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (6, "coolcarrie", "Blake", "csci3308", "cawa1436@colorado.edu", 5);
+
 
 /* Insert spots */
-INSERT INTO spots VALUES (1, 40.005911, -105.263942, "United States of America", "Bouler", "Colorado", "Stair", "Easy");
-INSERT INTO spots VALUES (2, 40.006518, -105.267539, "United States of America", "Bouler", "Colorado", "Ledge", "Easy");
-INSERT INTO spots VALUES (3, 40.007453, -105.266391, "United States of America", "Bouler", "Colorado", "Curb", "Medium");
+INSERT INTO spots VALUES (1, 40.005911, -105.263942, "United States of America", "Boulder", "Colorado", "Stair", "Easy");
+INSERT INTO spots VALUES (2, 40.006518, -105.267539, "United States of America", "Boulder", "Colorado", "Ledge", "Easy");
+INSERT INTO spots VALUES (3, 40.007453, -105.266391, "United States of America", "Boulder", "Colorado", "Curb", "Medium");
 
 /* Insert spot_stats */
 INSERT INTO spot_stats VALUES (1, 3, 1, 0, 0, 0, 1);
@@ -60,6 +65,9 @@ INSERT INTO spot_stats VALUES (3, 2, 1, 0, 0, 0, 2);
 
 /* Join users and spots in user_spot_junction */
 INSERT INTO user_spot_junction VALUES (1, 1);
+INSERT INTO user_spot_junction VALUES (1, 2);
+INSERT INTO user_spot_junction VALUES (1, 3);
+
 
 /* TESTS */
 SELECT *
@@ -71,7 +79,22 @@ FROM spots;
 SELECT *
 FROM user_spot_junction;
 
+SELECT spots.spot_type
+FROM spots
+JOIN user_spot_junction u1
+ON users.user_id = u1.user_id
+JOIN spots s1
+ON u1.spot_id = s1.spot_id
+WHERE u1.user_first_name LIKE "Adam";
 
+/*
+SELECT users.user_first_name, spots.spot_type
+FROM users, spots
+JOIN user_spot_junction
+ON users.user_id = user_spot_junction.user_id
+JOIN user_spot_junction
+ON user_spot_junction.spot_id = spots.spot_id;
+*/
 
 /*create table tables_info (user_count integer);*/
 /*Figure out how to make some sort of array in table)*/

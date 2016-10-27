@@ -45,12 +45,12 @@ CREATE TABLE user_spot_junction (
 
 /* Insert users */
 INSERT INTO users VALUES (1, "adam.awesome", "Adam", "csci3308", "adau3486@colorado.edu", 5);
-INSERT INTO users VALUES (2, "evan", "Evan", "csci3308" , "evyi6056@colorado.edu" , 5);
+INSERT INTO users VALUES (2, "EnergeticEvan", "Evan", "csci3308" , "evan.yin@colorado.edu" , 5);
 INSERT INTO users VALUES (3, "coolcarrie", "Carrie", "clubsports", "cawa1436@colorado.edu", 5);
-INSERT INTO users VALUES (4, "coolcarrie", "Fatin", "csci3308", "cawa1436@colorado.edu", 5);
-INSERT INTO users VALUES (5, "coolcarrie", "Jack", "csci3308", "cawa1436@colorado.edu", 5);
-INSERT INTO users VALUES (6, "coolcarrie", "Sterling", "csci3308", "cawa1436@colorado.edu", 5);
-INSERT INTO users VALUES (6, "coolcarrie", "Blake", "csci3308", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (4, "FitFatin", "Fatin", "csci3308", "Fatin.Kamaruzaman@colorado.edu", 5);
+INSERT INTO users VALUES (5, "JumpingJack", "Jack", "csci3308", "Jackson.Panetta@colorado.edu", 5);
+INSERT INTO users VALUES (6, "SuperStering", "Sterling", "csci3308", "Sterling.Vangeloff@colorado.edu", 5);
+INSERT INTO users VALUES (6, "BombBlake", "Blake", "csci3308", "Blake.Galbavy@colorado.edu", 5);
 
 
 /* Insert spots */

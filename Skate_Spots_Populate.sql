@@ -50,7 +50,7 @@ INSERT INTO users VALUES (3, "coolcarrie", "Carrie", "clubsports", "cawa1436@col
 INSERT INTO users VALUES (4, "coolcarrie", "Fatin", "csci3308", "cawa1436@colorado.edu", 5);
 INSERT INTO users VALUES (5, "coolcarrie", "Jack", "csci3308", "cawa1436@colorado.edu", 5);
 INSERT INTO users VALUES (6, "coolcarrie", "Sterling", "csci3308", "cawa1436@colorado.edu", 5);
-INSERT INTO users VALUES (6, "coolcarrie", "Blake", "csci3308", "cawa1436@colorado.edu", 5);
+INSERT INTO users VALUES (6, "MERGE CONFLICT", "Blake", "csci3308", "cawa1436@colorado.edu", 5);
 
 
 /* Insert spots */
@@ -81,11 +81,9 @@ FROM user_spot_junction;
 
 SELECT spots.spot_type
 FROM spots
-JOIN user_spot_junction u1
-ON users.user_id = u1.user_id
-JOIN spots s1
-ON u1.spot_id = s1.spot_id
-WHERE u1.user_first_name LIKE "Adam";
+JOIN user_spot_junction
+ON spots.spot_id = user_spot_junction.spot_id
+WHERE user_spot_junction.user_id = 1;
 
 /*
 SELECT users.user_first_name, spots.spot_type

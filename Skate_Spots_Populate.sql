@@ -1,4 +1,5 @@
-DROP TABLE user_spot_junction;
+DROP TABLE user_spot_colection;
+DROP TABLE user_spot_contribution;
 DROP TABLE users;
 DROP TABLE spots;
 DROP TABLE spot_stats;
@@ -34,7 +35,15 @@ CREATE TABLE spot_stats (
   security_rating integer
 );
 
-CREATE TABLE user_spot_junction (
+CREATE TABLE user_spot_colection (
+  user_id integer,
+  spot_id integer,
+  CONSTRAINT user_spot_pk PRIMARY KEY (user_id, spot_id),
+  FOREIGN KEY (user_id) REFERENCES users (user_id),
+  FOREIGN KEY (spot_id) REFERENCES spots (spot_id)
+);
+
+CREATE TABLE user_spot_contribution (
   user_id integer,
   spot_id integer,
   CONSTRAINT user_spot_pk PRIMARY KEY (user_id, spot_id),
@@ -50,23 +59,34 @@ INSERT INTO users VALUES (3, "coolcarrie", "Carrie", "clubsports", "cawa1436@col
 INSERT INTO users VALUES (4, "FitFatin", "Fatin", "csci3308", "Fatin.Kamaruzaman@colorado.edu", 5);
 INSERT INTO users VALUES (5, "JumpingJack", "Jack", "csci3308", "Jackson.Panetta@colorado.edu", 5);
 INSERT INTO users VALUES (6, "SuperStering", "Sterling", "csci3308", "Sterling.Vangeloff@colorado.edu", 5);
-INSERT INTO users VALUES (6, "BombBlake", "Blake", "csci3308", "Blake.Galbavy@colorado.edu", 5);
+INSERT INTO users VALUES (7, "BombBlake", "Blake", "csci3308", "Blake.Galbavy@colorado.edu", 5);
 
 /* Insert spots */
 INSERT INTO spots VALUES (1, 40.005911, -105.263942, "United States of America", "Boulder", "Colorado", "Stair", "Easy");
 INSERT INTO spots VALUES (2, 40.006518, -105.267539, "United States of America", "Boulder", "Colorado", "Ledge", "Easy");
 INSERT INTO spots VALUES (3, 40.007453, -105.266391, "United States of America", "Boulder", "Colorado", "Curb", "Medium");
+INSERT INTO spots VALUES (4, 40.004952, -105.259692, "United States of America", "Boulder", "Colorado", "Flatland", "Easy");
 
 /* Insert spot_stats */
 INSERT INTO spot_stats VALUES (1, 3, 1, 0, 0, 0, 1);
 INSERT INTO spot_stats VALUES (2, 4, 1, 0, 0, 0, 2);
 INSERT INTO spot_stats VALUES (3, 2, 1, 0, 0, 0, 2);
+INSERT INTO spot_stats VALUES (4, 5, 2, 0, 0, 0, 2);
 
-/* Join users and spots in user_spot_junction */
-INSERT INTO user_spot_junction VALUES (1, 1);
-INSERT INTO user_spot_junction VALUES (1, 2);
-INSERT INTO user_spot_junction VALUES (1, 3);
+/* Store the spots users have in their collection */
+INSERT INTO user_spot_colection VALUES (1, 1);
+INSERT INTO user_spot_colection VALUES (1, 2);
+INSERT INTO user_spot_colection VALUES (1, 3);
+INSERT INTO user_spot_colection VALUES (1, 4);
+INSERT INTO user_spot_colection VALUES (2, 3);
+INSERT INTO user_spot_colection VALUES (2, 4);
 
+/* Store the spots users have contributed */
+INSERT INTO user_spot_contribution VALUES (1, 1);
+INSERT INTO user_spot_contribution VALUES (1, 2);
+INSERT INTO user_spot_contribution VALUES (1, 3);
+INSERT INTO user_spot_contribution VALUES (1, 4);
+INSERT INTO user_spot_contribution VALUES (2, 4);
 
 /* TESTS */
 SELECT *
@@ -76,23 +96,12 @@ SELECT *
 FROM spots;
 
 SELECT *
-FROM user_spot_junction;
+FROM user_spot_colection;
 
-SELECT spots.spot_type
-FROM spots
-JOIN user_spot_junction
-ON spots.spot_id = user_spot_junction.spot_id
-WHERE user_spot_junction.user_id = 1;
+SELECT *
+FROM user_spot_contribution;
 
-/*
-SELECT users.user_first_name, spots.spot_type
-FROM users, spots
-JOIN user_spot_junction
-ON users.user_id = user_spot_junction.user_id
-JOIN user_spot_junction
-ON user_spot_junction.spot_id = spots.spot_id;
-*/
-
-/*create table tables_info (user_count integer);*/
-/*Figure out how to make some sort of array in table)*/
-/*create table user_spot_list (user_id integer primary key, spot_id integer);*/
+SELECT users.user_name, spots.city, spots.state, spots.country, spots.spot_type
+FROM users, spots, user_spot_colection
+WHERE user_spot_colection.user_id = users.user_id
+AND user_spot_colection.spot_id = spots.spot_id;

@@ -9,16 +9,10 @@ Members:
 6) Sterling Kane Vangeloff
 
 Description:
-	We are developing an app for skateboarders and BMXers to drop pins on different spots to save them for later. Users would then be allowed to trade spots to other users, and eventually lead to a comprehensive map of spots across the world entirely compiled by the users. Users can rate different spots based on their quality, allowing skaters to explore new spots they would not have known about otherwise.
-
-	Users will engage with the app by documenting a spot they know about, submitting it, and earning a new spot in return. The spots the skater is earning are spots they have not listed themselves and spots they have not received previously that have been listed by other users. This would motivate users to list more and more locations, driving the production of a comprehensive map of spots.
+	We are developing an app for skateboarders and BMXers to drop pins on different spots to save them for later. Users would then be allowed to trade spots to other users, and eventually lead to a comprehensive map of spots across the world entirely compiled by the users. Users can rate different spots based on their quality, allowing skaters to explore new spots they would not have known about otherwise. Users will engage with the app by documenting a spot they know about, submitting it, and earning a new spot in return. The spots the skater is earning are spots they have not listed themselves and spots they have not received previously that have been listed by other users. This would motivate users to list more and more locations, driving the production of a comprehensive map of spots.
 
 Vision Statement:
-	(no template)
-	To help people find what they are looking for.
-
-	(following template of slides)
-	For skaters who struggle finding new spots to skate, the “Skate Spot” app is an app that creates and connects skaters to a comprehensive map of currently undocumented spots to skate. Unlike hearing about spots from other skaters or finding them yourself, our product allows skaters to simply refer to the cooperatively created map to find new spots the may have never known about otherwise.
+	To connect skateboarders and BMXers to unknown locations within their geographic proximity.
 
 Motivation:
 	Skaters trying to explore new spots may not have any way of finding viable places to try new tricks or just to explore. This app would enable a cooperative effort on the part of the users to provide a map of different spots, enabling skaters to find the best spots around them at home or in a new city they may not have explored before.

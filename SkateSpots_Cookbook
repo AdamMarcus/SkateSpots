@@ -1,0 +1,6 @@
+This is a cookbook for importing and running the SkateSpots project.
+
+1. Open Android Studio
+2. Click "Import Project"
+3. Locate the "SkateSpots" file at the location SkateSpots/android/SkateSpots and click "OK"
+4. Click project tab on the left toolbar to open the project window.

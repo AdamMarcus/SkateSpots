@@ -2,7 +2,7 @@ package buffsftw.skatespots.fragments;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -11,6 +11,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.example.buffsftw.skatespots.R;
 import android.app.ListFragment;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 
 
@@ -21,12 +22,15 @@ import android.widget.ListAdapter;
  * interface.
  */
 
+import java.util.ArrayList;
+import java.util.List;
+
 import buffsftw.skatespots.MySpotsRecyclerViewAdapter;
 import buffsftw.skatespots.skateSpots;
 
 import static com.example.buffsftw.skatespots.R.*;
 
-public class SpotsFragment extends Fragment{
+public class SpotsFragment extends ListFragment implements AdapterView.OnItemClickListener{
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -43,17 +47,16 @@ public class SpotsFragment extends Fragment{
 
 
     // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static SpotsFragment newInstance() {
-        return newInstance(4);
-    }
+
+/*    public static SpotsFragment newInstance() {
+        return SpotsFragment.newInstance(4);
+    }*/
 
     // TODO: Customize parameter initialization
-    @SuppressWarnings("unused")
-    public static SpotsFragment newInstance(int columnCount) {
+    public SpotsFragment newInstance() {
         SpotsFragment fragment = new SpotsFragment();
         Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, columnCount);
+        args.putInt(ARG_COLUMN_COUNT, 24);
         fragment.setArguments(args);
         return fragment;
     }
@@ -63,11 +66,14 @@ public class SpotsFragment extends Fragment{
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, 24);
         if (getArguments() != null) {
             mColumnCount = getArguments().getInt(ARG_COLUMN_COUNT);
         }
+
     }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -85,7 +91,11 @@ public class SpotsFragment extends Fragment{
             }
             recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(skateSpots.ITEMS, mListener));
         }
-
+        skateSpots skateSpotList;
+        skateSpotList = new skateSpots();
+        skateSpotList.asd(5);
+        return view;
+    }
 
 
     @Override
@@ -99,13 +109,23 @@ public class SpotsFragment extends Fragment{
         }
     }
 
+    /*
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
+*/
+    /*
+    @Override
+    public void onResume() {
+        super.onResume();
+    }
+    */
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
 
-
+    }
 
 
     /**

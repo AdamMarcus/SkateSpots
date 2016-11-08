@@ -16,7 +16,7 @@ import com.example.buffsftw.skatespots.R;
  * Activities that contain this fragment must implement the
  * {@link profile.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link profile#newInstance} factory method to
+ * Use the {@link profile#} factory method to
  * create an instance of this fragment.
  */
 public class profile extends Fragment {
@@ -31,19 +31,9 @@ public class profile extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-    public profile() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment profile.
-     */
     // TODO: Rename and change types and number of parameters
+
+    /*
     public static profile newInstance(String param1, String param2) {
         profile fragment = new profile();
         Bundle args = new Bundle();
@@ -51,7 +41,7 @@ public class profile extends Fragment {
         args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
-    }
+    }*/
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

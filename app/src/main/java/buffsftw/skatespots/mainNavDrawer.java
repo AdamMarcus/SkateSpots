@@ -111,21 +111,23 @@ public class mainNavDrawer extends AppCompatActivity
         int id = item.getItemId();
         Fragment fragment = null;
         Class fragmentClass = null;
+        Bundle bundle = new Bundle();
         if (id == R.id.nav_map) {
             fragmentClass = mapsFragment.class;
             setTitle("@string/Map");
             requestLocationPermission();
+            bundle.putString("attr1", "bla");
         }
         else if (id == R.id.nav_spot_list) {
-            fragmentClass = ListFragment.class;
+            fragmentClass = SpotsFragment.class;
             setTitle("@string/Spots");
+            bundle.putInt("numRows", 50);
         }
 
         else if (id == R.id.nav_profile) {
-            fragmentClass = profile.class;
-            setTitle("@string/Profile");
+                fragmentClass = profile.class;
+                setTitle("@string/Profile");
         } else if (id == R.id.nav_manage) {
-            fragmentClass = profile.class;
             setTitle("@string/Profile");
         } else if (id == R.id.nav_settings) {
             fragmentClass = profile.class;
@@ -134,25 +136,17 @@ public class mainNavDrawer extends AppCompatActivity
             fragmentClass = profile.class;
             setTitle("@string/Login");
         }
-        if (id == R.id.nav_spot_list) {
-            try{
-            fragment = (Fragment) fragmentClass.newInstance();}
-            catch (Exception e) {
-                e.printStackTrace();
-            }
-            }
-
-        else{try {
-            fragment = (Fragment) fragmentClass.newInstance();
+        try {
+            fragment = (Fragment) fragmentClass.newInstance(); // Class type -> newInstance
+            fragment.setArguments(bundle);
         } catch (Exception e) {
             e.printStackTrace();
         }
-        }
 
-
+        // dynamic layout/content handling
         FragmentManager fragmentManager = getSupportFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-
+        fragmentManager.executePendingTransactions(); // ?
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
@@ -168,7 +162,7 @@ public class mainNavDrawer extends AppCompatActivity
     }
 
     public void onListFragmentInteraction(skateSpots.Spots spots){
-        //you can leave it empty
+
     }
 
 

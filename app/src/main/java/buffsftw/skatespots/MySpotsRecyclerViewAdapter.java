@@ -22,7 +22,8 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
     private final List<skateSpots.Spots> mValues;
     private final   SpotsFragment.OnListFragmentInteractionListener mListener;
 
-    public MySpotsRecyclerViewAdapter(List<skateSpots.Spots> items, SpotsFragment.OnListFragmentInteractionListener listener) {
+    public MySpotsRecyclerViewAdapter(List<skateSpots.Spots> items,
+                                      SpotsFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -59,7 +60,7 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
 
     @Override
     public void onListFragmentInteraction(skateSpots.Spots item) {
-        return;
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

@@ -13,6 +13,11 @@ import java.util.Map;
  * Android template wizards.
  * <p>
  */
+// class hnadles data for the listview
+ // should contain dataaccess indirectly ->
+ // data retrieval via remote web service -> json
+// local library -> Volley
+    //
 public class skateSpots {
 
     /**
@@ -52,6 +57,7 @@ public class skateSpots {
 
     /**
      * A class for Skate Spots
+     *
      */
     public static class Spots {
         public final String id;

@@ -17,4 +17,16 @@
     <string name="Settings">Settings</string>
     <string name="Login">Login</string>
 
+    <string-array name="data">
+        <item>Sun</item>
+        <item>Mercury</item>
+        <item>Venus</item>
+        <item>Earth</item>
+        <item>Mars</item>
+        <item>Jupiter</item>
+        <item>Saturn</item>
+        <item>Uranus</item>
+        <item>Neptune</item>
+    </string-array>
+    
 </resources>

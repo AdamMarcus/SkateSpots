@@ -1,0 +1,12 @@
+1. Download Android Studio and Install with Virtual Device and SDK Platform
+2. Clone project into AndroidStudioProjects (Located in User folder for windows)
+3.  In Android Studio select "Open an existing Android Studio Project"
+4.  Navigate to the cloned SkateSpots Directory and select "app"
+5.  If error Failed to find Building Tools revision 23.0.3, select blue optoin below error to install
+6. If you want to integrate git in android studio click Add Root on the prompt at the top left.  
+6b. If there is an issue locating git.exe refer to http://stackoverflow.com/questions/11928561/where-is-git-exe-located 
+C:\Users\<username>\AppData\Local\GitHub\PortableGit_<numbersandletters>\cmd\git.exe For windows 10
+6. Selecting "1:Project" on the left bar will show the directory of files for the project. 
+7. Navigate to app/res/values, right click values and select new>values resource file.  Name this new file "google_maps_api.xml" and replace the text with the block of text on the slack General page. 
+
+8.  The app ran for me after these steps on my laptop using the default created emulator.  This was on a fresh Android Studio install which I have not had on this Windows installation so everything should have been fresh.  I didn't run into any problems with the gradle version or sdk version but still don't know if others might.  If anyone has other errors let me know and we can try to troubleshoot them and get them working.  

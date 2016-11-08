@@ -1,0 +1,78 @@
+Naming Conventions:
+-All class names should be in capitalized camel case.
+
+    class User;
+    class CardGame;
+    class CurrentUserHand;
+
+-Interface names follow the same naming conventions as class names.
+-Incremental variables should follow the common "i", "j", "k" convention.
+-All variables with the exception of incremental variables should be short but meaningful nouns.
+-Variables must start with a character, no "_" or other symbols as the first character of a variable.
+
+    int goalNum;
+    string userName;
+
+-Instances of a class follow the same conventions as variables.
+-Constants should follow the same naming conventions as other variables but be all caps with each word separated by a "_".
+
+    static final int MAX_INDEX;
+    static final string EXIT_BUTTON_TEXT = "Exit";
+
+-Methods should be descriptive verbs in camel case.
+
+    private static calculateAverage();
+    public static returnUserName();
+
+-Declare variables directly above the block of code in which they are used.
+
+Indentation and Spacing:
+-Always indent blocks inside of brackets.
+-If a line is extremely long, indent at a "," to help readability and align with the last "(" of the line.
+
+    User newUser = new User(userFirstName, userLastName, userMiddleName, userUserName, userPassword, userEmail, userBirthday,
+                            userFavoriteColor, userFavoriteFood, userFavoriteSeason, userMother, userFather, userSiblings[]);
+
+-Key words like "for", "if", and "while" should have a space between them and the conditional that follows.
+-A line of whitespace should separate blocks of code that perform different functions as well as method bodies of different methods.
+
+Brackets:
+-The starting bracket "{" should always be on the same line as the statement it follows with a space between the two.
+-The ending bracket "}" should always have its own line.
+-Always include brackets even for single line "if" or "for" statements.
+-In "if else" statements the "else" or "else if" should follow the closing bracket of the previous statement.
+
+    public class User {
+        private string userName;
+    }
+
+    if (num = goalNum) {
+        return TRUE;
+    } else {
+        return FALSE;
+    }
+
+    for (int i = 0; i < goalNum; i++) {
+        currentNum++;
+    }
+
+Class Formatting:
+-package and import statements should be the first thing in a file.
+
+    package java.sample;
+
+    import java.sample.Sample
+
+-Next include a beginning comment in the following format at the top of every class.
+
+    /*
+     * SampleClassname
+     * Class function: what does the class do/contain
+     *
+     * Author
+     * Date
+     */
+
+-Include the class declaration next.
+-Declare instance variables in the following order: public, protected, and private.
+-Group methods by functionality.

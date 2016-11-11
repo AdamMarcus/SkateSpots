@@ -32,6 +32,14 @@
                 android:id="@+id/googleMapsStaticImage"
                 android:layout_gravity="center"/>
 
+            <TextView
+                android:text="Overall"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/textView2"
+                android:layout_gravity="center_horizontal"
+                />
+
             <RatingBar
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -40,22 +48,53 @@
                 android:numStars="5"
                 android:layout_gravity="center"/>
 
-            <TextView
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/hello_blank_fragment" />
+                android:layout_height="match_parent">
 
-            <TextView
-                android:text="@string/hello_blank_fragment"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView2" />
+                <TextView
+                    android:text="Security"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Security"
+                    android:layout_weight=".5"
+                    android:gravity="center"/>
 
-            <TextView
-                android:text="@string/hello_blank_fragment"
+                <TextView
+                    android:text="Difficulty"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:id="@+id/Difficulty"
+                    android:layout_weight=".5"
+                    android:gravity="center"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:id="@+id/textView3" />
+                android:layout_height="match_parent">
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/securityRating"
+                    android:layout_weight="1"
+                    android:numStars="5"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:rating="3"
+                    android:stepSize=".25" />
+
+                <RatingBar
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:id="@+id/difficultyRating"
+                    android:layout_weight="1"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:rating="3"
+                    android:stepSize=".25" />
+            </LinearLayout>
 
         </LinearLayout>
     </ScrollView>

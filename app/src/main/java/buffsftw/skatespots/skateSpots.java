@@ -28,8 +28,8 @@ public class skateSpots {
 /*
     public static final Map<String, Spots> ITEM_MAP = new HashMap<Spots>();
 */
-
-    private static final int COUNT = 24;
+//Number of spots to display
+    private static final int COUNT = 10;
 
     public void asd (int num) {
         // Add some sample items.

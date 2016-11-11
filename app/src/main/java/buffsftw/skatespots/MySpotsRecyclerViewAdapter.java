@@ -7,23 +7,23 @@ import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
 
-import buffsftw.skatespots.fragments.SpotsFragment;
+import buffsftw.skatespots.fragments.spotListFragment;
 
 import java.util.List;
 
 /**
  * {@link RecyclerView.Adapter} that can display a {@link skateSpots.Spots} and makes a call to the
- * specified {@link SpotsFragment.OnListFragmentInteractionListener}.
+ * specified {@link spotListFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecyclerViewAdapter.ViewHolder> implements SpotsFragment.OnListFragmentInteractionListener
+public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecyclerViewAdapter.ViewHolder> implements spotListFragment.OnListFragmentInteractionListener
 {
 
     private final List<skateSpots.Spots> mValues;
-    private final   SpotsFragment.OnListFragmentInteractionListener mListener;
+    private final   spotListFragment.OnListFragmentInteractionListener mListener;
 
     public MySpotsRecyclerViewAdapter(List<skateSpots.Spots> items,
-                                      SpotsFragment.OnListFragmentInteractionListener listener) {
+                                      spotListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -72,8 +72,8 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.id);
-            mContentView = (TextView) view.findViewById(R.id.content);
+            mIdView = (TextView) view.findViewById(R.id.distance);
+            mContentView = (TextView) view.findViewById(R.id.name);
         }
 
         @Override

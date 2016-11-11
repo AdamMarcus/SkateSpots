@@ -9,10 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import com.example.buffsftw.skatespots.R;
-import android.app.ListFragment;
 import android.widget.AdapterView;
-import android.widget.ListAdapter;
 
 
 /**
@@ -22,15 +19,12 @@ import android.widget.ListAdapter;
  * interface.
  */
 
-import java.util.ArrayList;
-import java.util.List;
-
 import buffsftw.skatespots.MySpotsRecyclerViewAdapter;
 import buffsftw.skatespots.skateSpots;
 
 import static com.example.buffsftw.skatespots.R.*;
 
-public class SpotsFragment extends ListFragment implements AdapterView.OnItemClickListener{
+public class spotListFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -42,22 +36,23 @@ public class SpotsFragment extends ListFragment implements AdapterView.OnItemCli
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-  public SpotsFragment() {
+  public spotListFragment() {
     }
 
 
     // TODO: Customize parameter initialization
 
-/*    public static SpotsFragment newInstance() {
-        return SpotsFragment.newInstance(4);
+/*    public static spotListFragment newInstance() {
+        return spotListFragment.newInstance(4);
     }*/
 
     // TODO: Customize parameter initialization
-    public SpotsFragment newInstance() {
-        SpotsFragment fragment = new SpotsFragment();
-        Bundle args = new Bundle();
-        args.putInt(ARG_COLUMN_COUNT, 24);
-        fragment.setArguments(args);
+    public spotListFragment newInstance() {
+        spotListFragment fragment = new spotListFragment();
+/* Not sure if needed, does not affect current app
+Bundle args = new Bundle();
+        args.putInt(ARG_COLUMN_COUNT, 2);
+        fragment.setArguments(args);*/
         return fragment;
     }
 
@@ -93,7 +88,8 @@ public class SpotsFragment extends ListFragment implements AdapterView.OnItemCli
         }
         skateSpots skateSpotList;
         skateSpotList = new skateSpots();
-        skateSpotList.asd(5);
+        //Changing this int changes the number of displayed spots
+        skateSpotList.asd(15);
         return view;
     }
 

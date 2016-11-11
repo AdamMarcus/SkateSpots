@@ -10,6 +10,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import com.example.buffsftw.skatespots.R;
+import com.squareup.picasso.Picasso;
+
+import buffsftw.skatespots.mainNavDrawer;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -49,23 +53,30 @@ public class spotFragment extends Fragment {
         return fragment;
     }*/
 
-/*    @Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
             mParam1 = getArguments().getString(ARG_PARAM1);
             mParam2 = getArguments().getString(ARG_PARAM2);
-            new DownloadImageTask((ImageView) findViewById(R.id.imageView3))
-                    .execute("http://maps.google.com/maps/api/staticmap?center=40.0150,-105.2705&zoom=15&size=200x200&sensor=false%22&scale=2&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7Cboulder,co");
+
+
         }
 
-    }*/
+    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_spot, container, false);
+        View view = inflater.inflate(R.layout.fragment_spot, container, false);
+        //Load map image into Image view
+        ImageView IV =(ImageView) view.findViewById(R.id.googleMapsStaticImage);
+        String url = "http://maps.google.com/maps/api/staticmap?center=40.0150,-105.2705&zoom=15&size=360x360&sensor=false%22&scale=2&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7Cboulder,co";
+        Picasso.with(getContext()).load(url).into(IV);
+
+        return view;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

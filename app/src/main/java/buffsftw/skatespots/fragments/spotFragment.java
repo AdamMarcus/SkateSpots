@@ -12,16 +12,14 @@ import android.widget.ImageView;
 import com.example.buffsftw.skatespots.R;
 import com.squareup.picasso.Picasso;
 
-import buffsftw.skatespots.mainNavDrawer;
-
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link spotFragment.OnFragmentInteractionListener} interface
+ * {@link SpotFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
  */
-public class spotFragment extends Fragment {
+public class SpotFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -33,7 +31,7 @@ public class spotFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
 
-  /*  public spotFragment() {
+  /*  public SpotFragment() {
         // Required empty public constructor
     }*/
 
@@ -41,11 +39,11 @@ public class spotFragment extends Fragment {
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
      *
-     * @return A new instance of fragment spotFragment.
+     * @return A new instance of fragment SpotFragment.
      */
     // TODO: Rename and change types and number of parameters
-/*    public static spotFragment newInstance(String param1, String param2) {
-        spotFragment fragment = new spotFragment();
+/*    public static SpotFragment newInstance(String param1, String param2) {
+        SpotFragment fragment = new SpotFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

@@ -7,23 +7,23 @@ import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
 
-import buffsftw.skatespots.fragments.spotListFragment;
+import buffsftw.skatespots.fragments.SpotListFragment;
 
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link skateSpots.Spots} and makes a call to the
- * specified {@link spotListFragment.OnListFragmentInteractionListener}.
+ * {@link RecyclerView.Adapter} that can display a {@link SkateSpots.Spots} and makes a call to the
+ * specified {@link SpotListFragment.OnListFragmentInteractionListener}.
  * TODO: Replace the implementation with code for your data type.
  */
-public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecyclerViewAdapter.ViewHolder> implements spotListFragment.OnListFragmentInteractionListener
+public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecyclerViewAdapter.ViewHolder> implements SpotListFragment.OnListFragmentInteractionListener
 {
 
-    private final List<skateSpots.Spots> mValues;
-    private final   spotListFragment.OnListFragmentInteractionListener mListener;
+    private final List<SkateSpots.Spots> mValues;
+    private final   SpotListFragment.OnListFragmentInteractionListener mListener;
 
-    public MySpotsRecyclerViewAdapter(List<skateSpots.Spots> items,
-                                      spotListFragment.OnListFragmentInteractionListener listener) {
+    public MySpotsRecyclerViewAdapter(List<SkateSpots.Spots> items,
+                                      SpotListFragment.OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -59,7 +59,7 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
     }
 
     @Override
-    public void onListFragmentInteraction(skateSpots.Spots item) {
+    public void onListFragmentInteraction(SkateSpots.Spots item) {
 
     }
 
@@ -67,7 +67,7 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
         public final View mView;
         public final TextView mIdView;
         public final TextView mContentView;
-        public skateSpots.Spots mItem;
+        public SkateSpots.Spots mItem;
 
         public ViewHolder(View view) {
             super(view);

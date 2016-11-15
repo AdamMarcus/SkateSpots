@@ -24,7 +24,7 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import static android.support.v4.content.ContextCompat.checkSelfPermission;
 
 
-public class mapsFragment extends Fragment implements OnMapReadyCallback  {
+public class MapsFragment extends Fragment implements OnMapReadyCallback  {
 
     MapView mMapView;
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

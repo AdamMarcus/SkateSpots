@@ -20,11 +20,11 @@ import android.widget.AdapterView;
  */
 
 import buffsftw.skatespots.MySpotsRecyclerViewAdapter;
-import buffsftw.skatespots.skateSpots;
+import buffsftw.skatespots.SkateSpots;
 
 import static com.example.buffsftw.skatespots.R.*;
 
-public class spotListFragment extends Fragment implements AdapterView.OnItemClickListener{
+public class SpotListFragment extends Fragment implements AdapterView.OnItemClickListener{
 
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
@@ -36,19 +36,19 @@ public class spotListFragment extends Fragment implements AdapterView.OnItemClic
      * Mandatory empty constructor for the fragment manager to instantiate the
      * fragment (e.g. upon screen orientation changes).
      */
-  public spotListFragment() {
+  public SpotListFragment() {
     }
 
 
     // TODO: Customize parameter initialization
 
-/*    public static spotListFragment newInstance() {
-        return spotListFragment.newInstance(4);
+/*    public static SpotListFragment newInstance() {
+        return SpotListFragment.newInstance(4);
     }*/
 
     // TODO: Customize parameter initialization
-    public spotListFragment newInstance() {
-        spotListFragment fragment = new spotListFragment();
+    public SpotListFragment newInstance() {
+        SpotListFragment fragment = new SpotListFragment();
 /* Not sure if needed, does not affect current app
 Bundle args = new Bundle();
         args.putInt(ARG_COLUMN_COUNT, 2);
@@ -84,10 +84,10 @@ Bundle args = new Bundle();
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(skateSpots.ITEMS, mListener));
+            recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(SkateSpots.ITEMS, mListener));
         }
-        skateSpots skateSpotList;
-        skateSpotList = new skateSpots();
+        SkateSpots skateSpotList;
+        skateSpotList = new SkateSpots();
         //Changing this int changes the number of displayed spots
         skateSpotList.asd(15);
         return view;
@@ -136,6 +136,6 @@ Bundle args = new Bundle();
      */
         public interface OnListFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onListFragmentInteraction(skateSpots.Spots item);
+        void onListFragmentInteraction(SkateSpots.Spots item);
     }
 }

@@ -2,13 +2,8 @@ package buffsftw.skatespots;
 
 import android.Manifest;
 import android.content.pm.PackageManager;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -18,26 +13,21 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.ImageView;
 
 import com.example.buffsftw.skatespots.R;
 
-import java.io.InputStream;
-
-import buffsftw.skatespots.fragments.spotListFragment;
-import buffsftw.skatespots.fragments.mapsFragment;
-import buffsftw.skatespots.fragments.profile;
-import buffsftw.skatespots.fragments.spotFragment;
+import buffsftw.skatespots.fragments.Profile;
+import buffsftw.skatespots.fragments.SpotListFragment;
+import buffsftw.skatespots.fragments.MapsFragment;
+import buffsftw.skatespots.fragments.SpotFragment;
 
 
-import static buffsftw.skatespots.fragments.spotListFragment.*;
+import static buffsftw.skatespots.fragments.SpotListFragment.*;
 
-public class mainNavDrawer extends AppCompatActivity
-        implements profile.OnFragmentInteractionListener, spotFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
+public class MainNavDrawer extends AppCompatActivity
+        implements Profile.OnFragmentInteractionListener, SpotFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
     public OnListFragmentInteractionListener mListener;
     public int REQUEST_LOC = 200;
     public String[] perms = {"android.permission.ACCESS_FINE_LOCATION"};
@@ -61,7 +51,7 @@ public class mainNavDrawer extends AppCompatActivity
         //Create null fragment and then default it to Maps
         Fragment fragment = null;
         Class fragmentClass = null;
-        fragmentClass = mapsFragment.class;
+        fragmentClass = MapsFragment.class;
         //Display fragment
         try {
             fragment = (Fragment) fragmentClass.newInstance();
@@ -130,28 +120,28 @@ public class mainNavDrawer extends AppCompatActivity
         Class fragmentClass = null;
         Bundle bundle = new Bundle();
         if (id == R.id.nav_map) {
-            fragmentClass = mapsFragment.class;
+            fragmentClass = MapsFragment.class;
             setTitle("@string/Map");
             requestLocationPermission();
             bundle.putString("attr1", "bla");
         }
         else if (id == R.id.nav_spot_list) {
-            fragmentClass = spotListFragment.class;
+            fragmentClass = SpotListFragment.class;
             setTitle("@string/Spots");
             bundle.putInt("numRows", 5);
         }
 
         else if (id == R.id.nav_profile) {
-            fragmentClass = profile.class;
+            fragmentClass = Profile.class;
             setTitle("@string/Profile");
         } else if (id == R.id.nav_manage) {
-            fragmentClass = profile.class;
+            fragmentClass = Profile.class;
             setTitle("@string/Settings");
         } else if (id == R.id.nav_settings) {
-            fragmentClass = profile.class;
+            fragmentClass = Profile.class;
             setTitle("@string/Settings");
         } else if (id == R.id.nav_login) {
-            fragmentClass = spotFragment.class;
+            fragmentClass = SpotFragment.class;
             setTitle("@string/Login");
         }
         try {
@@ -178,14 +168,14 @@ public class mainNavDrawer extends AppCompatActivity
     public void onArticleSelected(int position){
 
     }
-//Runs when spot from spotListFragment is clicked
-    //It should replace the fragment with a spotFragment with the information about the spot that was clicked on
-    public void onListFragmentInteraction(skateSpots.Spots spots){
+//Runs when spot from SpotListFragment is clicked
+    //It should replace the fragment with a SpotFragment with the information about the spot that was clicked on
+    public void onListFragmentInteraction(SkateSpots.Spots spots){
         Fragment fragment = null;
         Class fragmentClass = null;
         Bundle bundle = new Bundle();
 
-        fragmentClass = spotFragment.class;
+        fragmentClass = SpotFragment.class;
         setTitle("Spot");
 
         try {

@@ -18,7 +18,7 @@ import java.util.Map;
  // data retrieval via remote web service -> json
 // local library -> Volley
     //
-public class skateSpots {
+public class SkateSpots {
 
     /**
      * An array of sample (dummy) items.

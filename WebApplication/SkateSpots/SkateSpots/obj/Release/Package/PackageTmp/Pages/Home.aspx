@@ -4,13 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <title>Home Page</title>
+    <title>skatespots</title>
+    <link rel="icon" href="http://www.colorado.edu/sites/all/themes/custom/homepage2016/favicon.ico" />
 </head>
 <body>
     <form id="form1" runat="server">
     <div>
         <h1>Skate Spots!</h1>
-    
     </div>
     </form>
 </body>

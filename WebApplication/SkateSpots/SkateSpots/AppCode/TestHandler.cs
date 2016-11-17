@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data.Sql;
+using System.Data.SqlClient;
 
 // HttpHandler for testing the WebServer setup
 
@@ -11,7 +13,6 @@ namespace SkateSpots
     {
         public void ProcessRequest(HttpContext context)
         {
-            context.Response.Write("Hello!");
         }
 
         public bool IsReusable

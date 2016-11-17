@@ -64,3 +64,4 @@ D:\SkateSpots-repo\development\SkateSpots\WebApplication\SkateSpots\SkateSpots\b
 D:\SkateSpots-repo\development\SkateSpots\WebApplication\SkateSpots\SkateSpots\obj\Release\SkateSpots.csprojResolveAssemblyReference.cache
 D:\SkateSpots-repo\development\SkateSpots\WebApplication\SkateSpots\SkateSpots\obj\Release\SkateSpots.dll
 D:\SkateSpots-repo\development\SkateSpots\WebApplication\SkateSpots\SkateSpots\obj\Release\SkateSpots.pdb
+D:\SkateSpots-repo\development\SkateSpots\WebApplication\SkateSpots\SkateSpots\bin\Microsoft.SqlServer.ConnectionInfo.dll

@@ -15,7 +15,6 @@ import java.util.List;
 /**
  * {@link RecyclerView.Adapter} that can display a {@link SkateSpots.Spots} and makes a call to the
  * specified {@link SpotListFragment.OnListFragmentInteractionListener}.
- * TODO: Replace the implementation with code for your data type.
  */
 public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecyclerViewAdapter.ViewHolder> implements SpotListFragment.OnListFragmentInteractionListener
 {
@@ -39,6 +38,7 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(1);
+        //Todo: Calculate distance with phone location and spot location
         holder.mDistanceView.setText("3");
         holder.mNameView.setText(mValues.get(position).name);
         holder.mRatingView.setRating(mValues.get(position).rating);

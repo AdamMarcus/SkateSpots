@@ -3,10 +3,12 @@ package buffsftw.skatespots.fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.buffsftw.skatespots.R;
@@ -70,12 +72,20 @@ public class SpotFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_spot, container, false);
         //Load map image into Image view
-        ImageView IV =(ImageView) view.findViewById(R.id.googleMapsStaticImage);
+        ImageButton IV =(ImageButton) view.findViewById(R.id.googleMapsStaticImage);
         String url = "http://maps.google.com/maps/api/staticmap?center=40.0150,-105.2705&zoom=15&size=360x360&sensor=false%22&scale=2&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7Cboulder,co";
         Picasso.with(getContext()).load(url).into(IV);
 
+        IV.setOnClickListener(this.onClickListener);
         return view;
     }
+
+    View.OnClickListener onClickListener= new View.OnClickListener() {
+        public void onClick(View v) {
+//What to do when map is clicked
+        }
+    };
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {

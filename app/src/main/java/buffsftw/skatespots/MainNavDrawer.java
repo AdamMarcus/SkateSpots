@@ -200,13 +200,34 @@ public class MainNavDrawer extends AppCompatActivity
         /*fragmentManager.executePendingTransactions();*/ // ?
     }
 
+
+    public void onSpotFragmentInteraction(SkateSpots.Spots spots){
+        Fragment fragment = null;
+        Class fragmentClass = null;
+        Bundle bundle = new Bundle();
+
+        fragmentClass = SpotFragment.class;
+        setTitle("Spot");
+
+        try {
+            fragment = (Fragment) fragmentClass.newInstance(); // Class type -> newInstance
+            fragment.setArguments(bundle);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        // dynamic layout/content handling
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
+        /*fragmentManager.executePendingTransactions();*/ // ?
+    }
+
     public void requestLocationPermission() {
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
                 != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(this, perms, REQUEST_LOC);
         }
     }
-
 
     @Override
     public void onRequestPermissionsResult(int permsRequestCode, String[] permissions, int[] grantResults){

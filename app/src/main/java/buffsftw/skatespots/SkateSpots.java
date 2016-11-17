@@ -43,7 +43,7 @@ public class SkateSpots {
      }
 
      private static Spots createSpots(int position) {
-         return new Spots(String.valueOf(position), "Name" + position, "get picture by id", "Name" + position + "details", 5, 40.0150, -105.2705);
+         return new Spots(String.valueOf(position), "Name" + position, "get picture by id", "Name" + position + "details", 5, 40.0150, -105.2705, 3, 3);
      }
 
     private static String makeDetails(int position) {
@@ -67,12 +67,14 @@ public class SkateSpots {
         private int rating;
         private double lat;
         private double lon;
+        public int securityRating;
+        public int difficultyRating;
 
 
  /*       public Spots() {
         }*/
 
-        public Spots(String id, String name, String picture, String details, int rating, double lat, double lon)
+        public Spots(String id, String name, String picture, String details, int rating, double lat, double lon, int securityRating, int difficultyRating)
         {
             this.id = id;
             this.name = name;
@@ -81,6 +83,8 @@ public class SkateSpots {
             this.rating = rating;
             this.lat = lat;
             this.lon = lon;
+            this.securityRating = securityRating;
+            this.difficultyRating = difficultyRating;
         }
 
         public String getName() {
@@ -105,6 +109,14 @@ public class SkateSpots {
 
         public double getLon() {
             return lon;
+        }
+
+        public int getSecurityRating() {
+            return securityRating;
+        }
+
+        public int getDifficultyRating() {
+            return difficultyRating;
         }
     }
 

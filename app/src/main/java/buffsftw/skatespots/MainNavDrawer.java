@@ -29,7 +29,9 @@ import buffsftw.skatespots.fragments.SpotFragment;
 import static buffsftw.skatespots.fragments.SpotListFragment.*;
 
 public class MainNavDrawer extends AppCompatActivity
-        implements ProfileFragment.OnFragmentInteractionListener, SpotFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
+        implements ProfileFragment.OnFragmentInteractionListener, SpotFragment.OnFragmentInteractionListener,
+        NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener,MarketFragment.OnFragmentInteractionListener,
+        NewSpotFragment.OnFragmentInteractionListener{
     public OnListFragmentInteractionListener mListener;
     public int REQUEST_LOC = 200;
     public String[] perms = {"android.permission.ACCESS_FINE_LOCATION"};
@@ -167,9 +169,14 @@ public class MainNavDrawer extends AppCompatActivity
         //you can leave it empty
     }
 
-    public void onArticleSelected(int position){
-
+    public void onNewSpotFragmentInteraction(Uri uri){
+        //you can leave it empty
     }
+
+    public void onMarketFragmentInteraction(Uri uri){
+        //you can leave it empty
+    }
+
 //Runs when spot from SpotListFragment is clicked
     //It should replace the fragment with a SpotFragment with the information about the spot that was clicked on
     public void onListFragmentInteraction(SkateSpots.Spots spots){

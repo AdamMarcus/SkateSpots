@@ -19,13 +19,14 @@ import android.widget.AdapterView;
  * interface.
  */
 
+import org.json.JSONException;
+
 import buffsftw.skatespots.MySpotsRecyclerViewAdapter;
 import buffsftw.skatespots.SkateSpots;
 
 import static com.example.buffsftw.skatespots.R.*;
 
 public class SpotListFragment extends Fragment implements AdapterView.OnItemClickListener{
-
     // TODO: Customize parameter argument names
     private static final String ARG_COLUMN_COUNT = "column-count";
     // TODO: Customize parameters
@@ -42,9 +43,6 @@ public class SpotListFragment extends Fragment implements AdapterView.OnItemClic
 
     // TODO: Customize parameter initialization
 
-/*    public static SpotListFragment newInstance() {
-        return SpotListFragment.newInstance(4);
-    }*/
 
     // TODO: Customize parameter initialization
     public SpotListFragment newInstance() {
@@ -86,10 +84,16 @@ Bundle args = new Bundle();
             }
             recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(SkateSpots.ITEMS, mListener));
         }
+        //Create an empty array for SkateSpots
         SkateSpots skateSpotList;
         skateSpotList = new SkateSpots();
-        //Changing this int changes the number of displayed spots
-        skateSpotList.asd(15);
+
+        //Calls to populate the list with function in SkateSpots.java
+        try {
+            skateSpotList.populateList();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
         return view;
     }
 
@@ -105,13 +109,13 @@ Bundle args = new Bundle();
         }
     }
 
-    /*
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
+
     }
-*/
+
     /*
     @Override
     public void onResume() {

@@ -3,6 +3,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
@@ -38,9 +39,11 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(1);
-        holder.mIdView.setText(mValues.get(position).name);
-        holder.mContentView.setText(mValues.get(position).details);
-
+        holder.mDistanceView.setText("3");
+        holder.mNameView.setText(mValues.get(position).name);
+        holder.mRatingView.setRating(mValues.get(position).rating);
+        holder.mRatingDifficultyView.setText(Integer.toString(mValues.get(position).difficultyRating));
+        holder.mRatingSecurityView.setText(Integer.toString(mValues.get(position).securityRating));
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -58,6 +61,8 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
         return mValues.size();
     }
 
+
+
     @Override
     public void onListFragmentInteraction(SkateSpots.Spots item) {
 
@@ -65,20 +70,28 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+
+        public final TextView mNameView;
+        public final RatingBar mRatingView;
+        public final TextView mRatingDifficultyView;
+        public final TextView mRatingSecurityView;
+        public final TextView mDistanceView;
+
         public SkateSpots.Spots mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.distance);
-            mContentView = (TextView) view.findViewById(R.id.name);
+            mNameView = (TextView) view.findViewById(R.id.name);
+            mDistanceView = (TextView) view.findViewById(R.id.distance);
+            mRatingView = (RatingBar) view.findViewById(R.id.ratingBar);
+            mRatingDifficultyView = (TextView) view.findViewById(R.id.difficulty);
+            mRatingSecurityView = (TextView) view.findViewById(R.id.security);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mNameView.getText() + "'";
         }
     }
 }

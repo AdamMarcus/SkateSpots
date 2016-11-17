@@ -125,28 +125,28 @@ public class MainNavDrawer extends AppCompatActivity
         Bundle bundle = new Bundle();
         if (id == R.id.nav_map) {
             fragmentClass = MapsFragment.class;
-            setTitle("@string/Map");
+            setTitle("Map");
             requestLocationPermission();
             bundle.putString("attr1", "bla");
         }
         else if (id == R.id.nav_spot_list) {
             fragmentClass = SpotListFragment.class;
-            setTitle("@string/Spots");
+            setTitle("Spots");
             bundle.putInt("numRows", 5);
         }
 
         else if (id == R.id.nav_profile) {
             fragmentClass = ProfileFragment.class;
-            setTitle("@string/ProfileFragment");
+            setTitle("Profile");
         } else if (id == R.id.nav_market) {
             fragmentClass = MarketFragment.class;
-            setTitle("@string/Market");
+            setTitle("Market");
         } else if (id == R.id.nav_settings) {
             fragmentClass = NewSpotFragment.class;
-            setTitle("@string/Market");
+            setTitle("Market");
         } else if (id == R.id.nav_logout) {
+            //Remove user information and reset login activity trigger
             fragmentClass = SpotFragment.class;
-            setTitle("@string/Logout");
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance(); // Class type -> newInstance

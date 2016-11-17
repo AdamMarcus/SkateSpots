@@ -1,6 +1,11 @@
 package buffsftw.skatespots;
 
 import android.support.annotation.Nullable;
+import android.util.Log;
+
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -18,8 +23,9 @@ import java.util.Map;
  // data retrieval via remote web service -> json
 // local library -> Volley
     //
-public class SkateSpots {
 
+public class SkateSpots {
+    public String exampleJson = " { \"spotNumber\": 5, \"spotsList\":[ { \"id\":100, \"name\":\"VAC Stairs\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":3, \"lat\":40.006947, \"lon\":-105.270652, \"difficulty\":5, \"security\":4} ,{ \"id\":101, \"name\":\"Duane Physics\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":2, \"lat\":40.007806, \"lon\":-105.267915, \"difficulty\":4, \"security\":1}, { \"id\":103, \"name\":\"Farrand Field\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":4, \"lat\":40.006369, \"lon\":-105.268411, \"difficulty\":3, \"security\":2} ]}";
     /**
      * An array of sample (dummy) items.
      */
@@ -28,13 +34,27 @@ public class SkateSpots {
 /*
     public static final Map<String, Spots> ITEM_MAP = new HashMap<Spots>();
 */
-//Number of spots to display
+//Number of spots to create
     private static final int COUNT = 10;
-
-    public void asd (int num) {
+    public void populateList () throws JSONException {
         // Add some sample items.
-        for (int i = 1; i <= COUNT; i++) {
-            addItem(createSpots(i));
+        JSONObject jsonRoot = new JSONObject(exampleJson);
+        int responseNumber = jsonRoot.getInt("spotNumber");
+        String responseString = jsonRoot.getString("spotsList");
+        JSONArray jsonSpots = new JSONArray(responseString);
+        for (int i = 0; i <= responseNumber; i++) {
+            JSONObject jsonSpot = jsonSpots.getJSONObject(i);
+            String id = jsonSpot.getString("id");
+            String name = jsonSpot.getString("name");
+            String picture = jsonSpot.getString("pictureURL");
+            String details = jsonSpot.getString("details");
+            int rating = jsonSpot.getInt("rating");
+            double lat = jsonSpot.getDouble("lat");
+            double lon = jsonSpot.getDouble("lon");
+            int difficultyRating = jsonSpot.getInt("difficulty");
+            int securityRating = jsonSpot.getInt("security");
+            Log.d("myTag", name);
+            addItem(createSpots(id,name,picture,details,rating,lat,lon,difficultyRating,securityRating));
         }}
 
      private static void addItem(Spots spot) {
@@ -42,8 +62,8 @@ public class SkateSpots {
 /*         ITEM_MAP.put(spot.id, spot);*/
      }
 
-     private static Spots createSpots(int position) {
-         return new Spots(String.valueOf(position), "Name" + position, "get picture by id", "Name" + position + "details", 5, 40.0150, -105.2705, 3, 3);
+     private static Spots createSpots(String id, String name, String picture, String details, int rating, double lat, double lon, int securityRating, int difficultyRating) {
+         return new Spots(id,name,picture,details,rating,lat,lon,difficultyRating,securityRating);
      }
 
     private static String makeDetails(int position) {
@@ -64,7 +84,7 @@ public class SkateSpots {
         public String name;
         private String picture;
         public String details;
-        private int rating;
+        public int rating;
         private double lat;
         private double lon;
         public int securityRating;

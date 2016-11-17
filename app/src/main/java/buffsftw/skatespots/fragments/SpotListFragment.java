@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.support.v7.widget.RecyclerView.Adapter;
 import android.widget.AdapterView;
 
 
@@ -82,8 +83,11 @@ Bundle args = new Bundle();
             } else {
                 recyclerView.setLayoutManager(new GridLayoutManager(context, mColumnCount));
             }
-            recyclerView.setAdapter(new MySpotsRecyclerViewAdapter(SkateSpots.ITEMS, mListener));
+            Adapter adapter = new MySpotsRecyclerViewAdapter(SkateSpots.ITEMS, mListener);
+            recyclerView.setAdapter(adapter);
+
         }
+
         //Create an empty array for SkateSpots
         SkateSpots skateSpotList;
         skateSpotList = new SkateSpots();

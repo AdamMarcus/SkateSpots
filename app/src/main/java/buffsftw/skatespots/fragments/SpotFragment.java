@@ -8,11 +8,15 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Adapter;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.example.buffsftw.skatespots.R;
 import com.squareup.picasso.Picasso;
+
+import buffsftw.skatespots.SkateSpots;
 
 
 /**
@@ -24,12 +28,9 @@ import com.squareup.picasso.Picasso;
 public class SpotFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+/*    private static final SkateSpots ARG_PARAM1 = "param1";*/
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    private SkateSpots spot;
 
     private OnFragmentInteractionListener mListener;
 
@@ -44,21 +45,19 @@ public class SpotFragment extends Fragment {
      * @return A new instance of fragment SpotFragment.
      */
     // TODO: Rename and change types and number of parameters
-/*    public static SpotFragment newInstance(String param1, String param2) {
+   public static SpotFragment newInstance(String param1, String param2) {
         SpotFragment fragment = new SpotFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        /*args.put(ARG_PARAM1, param1);*/
         fragment.setArguments(args);
         return fragment;
-    }*/
+    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            /*spot = getArguments().getString(ARG_PARAM1);*/
 
 
         }
@@ -71,12 +70,20 @@ public class SpotFragment extends Fragment {
 
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_spot, container, false);
+/*        Bundle bundle = getArguments();
+
         //Load map image into Image view
         ImageButton IV =(ImageButton) view.findViewById(R.id.googleMapsStaticImage);
-        String url = "http://maps.google.com/maps/api/staticmap?center=40.0150,-105.2705&zoom=15&size=360x360&sensor=false%22&scale=2&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7Cboulder,co";
+        String lat = String.valueOf(bundle.getDouble("lat",40.0150));
+        String lon = String.valueOf(bundle.getDouble("lon",-105.2705));
+        String url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=16&scale=2&size=360x360&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C" + lat + "," + lon;
         Picasso.with(getContext()).load(url).into(IV);
-
         IV.setOnClickListener(this.onClickListener);
+
+        TextView nameTextView = (TextView) view.findViewById(R.id.textView2);
+        String nameText = bundle.getString("name","Default");
+        nameTextView.setText(nameText);*/
+
         return view;
     }
 
@@ -104,6 +111,24 @@ public class SpotFragment extends Fragment {
                     + " must implement OnFragmentInteractionListener");
         }
     }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        Bundle bundle = getArguments();
+        View view = getView();
+        //Load map image into Image view
+        ImageButton IV =(ImageButton) view.findViewById(R.id.googleMapsStaticImage);
+        String lat = String.valueOf(bundle.getDouble("lat",40.0150));
+        String lon = String.valueOf(bundle.getDouble("lon",-105.2705));
+        String url = "http://maps.googleapis.com/maps/api/staticmap?center=" + lat + "," + lon + "&zoom=16&scale=2&size=360x360&maptype=hybrid&format=png&visual_refresh=true&markers=size:mid%7Ccolor:0xff0000%7Clabel:1%7C" + lat + "," + lon;
+        Picasso.with(getContext()).load(url).into(IV);
+        IV.setOnClickListener(this.onClickListener);
+
+        TextView nameTextView = (TextView) view.findViewById(R.id.textView2);
+        String nameText = bundle.getString("name","Default");
+        nameTextView.setText(nameText);
+            }
 
     @Override
     public void onDetach() {

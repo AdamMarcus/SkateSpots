@@ -25,7 +25,7 @@ import java.util.Map;
     //
 
 public class SkateSpots {
-    public String exampleJson = " { \"spotNumber\": 5, \"spotsList\":[ { \"id\":100, \"name\":\"VAC Stairs\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":3, \"lat\":40.006947, \"lon\":-105.270652, \"difficulty\":5, \"security\":4} ,{ \"id\":101, \"name\":\"Duane Physics\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":2, \"lat\":40.007806, \"lon\":-105.267915, \"difficulty\":4, \"security\":1}, { \"id\":103, \"name\":\"Farrand Field\", \"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\", \"details\":\"Details go here\", \"rating\":4, \"lat\":40.006369, \"lon\":-105.268411, \"difficulty\":3, \"security\":2} ]}";
+    public String exampleJson = "{\"spotNumber\":3,\"spotsList\":[{\"id\":100,\"name\":\"VACStairs\",\"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\",\"rail\":false,\"stair\":true,\"gap\":true,\"ledge\":true,\"rating\":5,\"lat\":40.006947,\"lon\":-105.270652,\"difficulty\":5,\"security\":4},{\"id\":101,\"name\":\"DuanePhysics\",\"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\",\"rail\":false,\"stair\":true,\"gap\":true,\"ledge\":false,\"rating\":3,\"lat\":40.007806,\"lon\":-105.267915,\"difficulty\":4,\"security\":3},{\"id\":102,\"name\":\"FarrandField\",\"pictureURL\":\"http://applianceelite.com/skateSpotsCU/defaultStairs.png\",\"rail\":false,\"stair\":true,\"gap\":false,\"ledge\":true,\"rating\":2,\"lat\":40.006369,\"lon\":-105.268411,\"difficulty\":3,\"security\":2}]}";
     /**
      * An array of sample (dummy) items.
      */
@@ -34,27 +34,28 @@ public class SkateSpots {
 /*
     public static final Map<String, Spots> ITEM_MAP = new HashMap<Spots>();
 */
-//Number of spots to create
-    private static final int COUNT = 10;
     public void populateList () throws JSONException {
-        // Add some sample items.
+        // Add some items.
+        clearList();
         JSONObject jsonRoot = new JSONObject(exampleJson);
         int responseNumber = jsonRoot.getInt("spotNumber");
         String responseString = jsonRoot.getString("spotsList");
         JSONArray jsonSpots = new JSONArray(responseString);
-        for (int i = 0; i <= responseNumber; i++) {
+        for (int i = 0; i <= (responseNumber - 1); i++) {
             JSONObject jsonSpot = jsonSpots.getJSONObject(i);
-            String id = jsonSpot.getString("id");
+            int id = jsonSpot.getInt("id");
             String name = jsonSpot.getString("name");
             String picture = jsonSpot.getString("pictureURL");
-            String details = jsonSpot.getString("details");
+            boolean rail = jsonSpot.getBoolean("rail");
+            boolean stair = jsonSpot.getBoolean("stair");
+            boolean gap = jsonSpot.getBoolean("gap");
+            boolean ledge = jsonSpot.getBoolean("ledge");
             int rating = jsonSpot.getInt("rating");
             double lat = jsonSpot.getDouble("lat");
             double lon = jsonSpot.getDouble("lon");
             int difficultyRating = jsonSpot.getInt("difficulty");
             int securityRating = jsonSpot.getInt("security");
-            Log.d("myTag", name);
-            addItem(createSpots(id,name,picture,details,rating,lat,lon,difficultyRating,securityRating));
+            addItem(createSpots(id,name,picture,rail,stair,gap,ledge,rating,lat,lon,difficultyRating,securityRating));
         }}
 
      private static void addItem(Spots spot) {
@@ -62,28 +63,27 @@ public class SkateSpots {
 /*         ITEM_MAP.put(spot.id, spot);*/
      }
 
-     private static Spots createSpots(String id, String name, String picture, String details, int rating, double lat, double lon, int securityRating, int difficultyRating) {
-         return new Spots(id,name,picture,details,rating,lat,lon,difficultyRating,securityRating);
+    private static void clearList(){
+        ITEMS.clear();
+    }
+
+     private static Spots createSpots(int id, String name, String picture, boolean rail,boolean stair,boolean gap, boolean ledge, int rating, double lat, double lon, int securityRating, int difficultyRating) {
+         return new Spots(id,name,picture,rail,stair,gap,ledge,rating,lat,lon,difficultyRating,securityRating);
      }
 
-    private static String makeDetails(int position) {
-        StringBuilder builder = new StringBuilder();
-        builder.append("Details about Item: ").append(position);
-        for (int i = 0; i < position; i++) {
-            builder.append("\nMore details information here.");
-        }
-        return builder.toString();
-    }
 
     /**
      * A class for Skate Spots
      *
      */
     public static class Spots {
-        public final String id;
+        public final int id;
         public String name;
         private String picture;
-        public String details;
+        public boolean rail;
+        public boolean stair;
+        public boolean gap;
+        public boolean ledge;
         public int rating;
         private double lat;
         private double lon;
@@ -94,17 +94,24 @@ public class SkateSpots {
  /*       public Spots() {
         }*/
 
-        public Spots(String id, String name, String picture, String details, int rating, double lat, double lon, int securityRating, int difficultyRating)
+        public Spots(int id, String name, String picture, boolean rail,boolean stair,boolean gap, boolean ledge, int rating, double lat, double lon, int securityRating, int difficultyRating)
         {
             this.id = id;
             this.name = name;
             this.picture = picture;
-            this.details = details;
+            this.rail = rail;
+            this.stair = stair;
+            this.gap = gap;
+            this.ledge = ledge;
             this.rating = rating;
             this.lat = lat;
             this.lon = lon;
             this.securityRating = securityRating;
             this.difficultyRating = difficultyRating;
+        }
+
+        public int getID() {
+            return id;
         }
 
         public String getName() {
@@ -115,8 +122,20 @@ public class SkateSpots {
             return picture;
         }
 
-        public String getDetails() {
-            return details;
+        public boolean getRail() {
+            return rail;
+        }
+
+        public boolean getStair() {
+            return stair;
+        }
+
+        public boolean getGap() {
+            return gap;
+        }
+
+        public boolean getLedge() {
+            return ledge;
         }
 
         public int getRating() {

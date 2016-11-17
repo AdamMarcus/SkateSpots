@@ -37,9 +37,9 @@ public class MySpotsRecyclerViewAdapter extends RecyclerView.Adapter<MySpotsRecy
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.mItem = mValues.get(1);
+        holder.mItem = mValues.get(position);
         //Todo: Calculate distance with phone location and spot location
-        holder.mDistanceView.setText("3");
+        holder.mDistanceView.setText("3 mi.");
         holder.mNameView.setText(mValues.get(position).name);
         holder.mRatingView.setRating(mValues.get(position).rating);
         holder.mRatingDifficultyView.setText(Integer.toString(mValues.get(position).difficultyRating));

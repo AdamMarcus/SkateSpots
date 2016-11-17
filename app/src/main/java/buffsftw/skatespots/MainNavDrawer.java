@@ -183,7 +183,7 @@ public class MainNavDrawer extends AppCompatActivity
         Fragment fragment = null;
         Class fragmentClass = null;
         Bundle bundle = new Bundle();
-
+        bundle = skateSpotBundler(bundle,spots);
         fragmentClass = SpotFragment.class;
         setTitle("Spot");
 
@@ -205,7 +205,7 @@ public class MainNavDrawer extends AppCompatActivity
         Fragment fragment = null;
         Class fragmentClass = null;
         Bundle bundle = new Bundle();
-
+        bundle = skateSpotBundler(bundle,spots);
         fragmentClass = SpotFragment.class;
         setTitle("Spot");
 
@@ -238,6 +238,23 @@ public class MainNavDrawer extends AppCompatActivity
                 break;
 
         }
+
+    }
+
+    public Bundle skateSpotBundler(Bundle bundle,SkateSpots.Spots spot ){
+        bundle.putInt("id",spot.getID());
+        bundle.putString("name",spot.getName());
+        bundle.putString("picture",spot.getPicture());
+        bundle.putBoolean("rail",spot.getRail());
+        bundle.putBoolean("stair",spot.getStair());
+        bundle.putBoolean("gap",spot.getGap());
+        bundle.putBoolean("ledge",spot.getLedge());
+        bundle.putDouble("lon",spot.getLon());
+        bundle.putDouble("lat",spot.getLat());
+        bundle.putInt("difficulty",spot.getDifficultyRating());
+        bundle.putInt("security",spot.getSecurityRating());
+        return bundle;
+
 
     }
 

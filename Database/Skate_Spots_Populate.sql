@@ -2,6 +2,7 @@
 *	Script to create the following tables:
 		user, spot, spot_stats, user_spot_collection, user_spot_contribution.
 	Also, populates a small amount of data for basic testing.
+	Prep for implementation
 */
 
 

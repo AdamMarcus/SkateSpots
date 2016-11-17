@@ -18,7 +18,9 @@ import android.view.MenuItem;
 
 import com.example.buffsftw.skatespots.R;
 
-import buffsftw.skatespots.fragments.Profile;
+import buffsftw.skatespots.fragments.MarketFragment;
+import buffsftw.skatespots.fragments.NewSpotFragment;
+import buffsftw.skatespots.fragments.ProfileFragment;
 import buffsftw.skatespots.fragments.SpotListFragment;
 import buffsftw.skatespots.fragments.MapsFragment;
 import buffsftw.skatespots.fragments.SpotFragment;
@@ -27,7 +29,7 @@ import buffsftw.skatespots.fragments.SpotFragment;
 import static buffsftw.skatespots.fragments.SpotListFragment.*;
 
 public class MainNavDrawer extends AppCompatActivity
-        implements Profile.OnFragmentInteractionListener, SpotFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
+        implements ProfileFragment.OnFragmentInteractionListener, SpotFragment.OnFragmentInteractionListener, NavigationView.OnNavigationItemSelectedListener,ActivityCompat.OnRequestPermissionsResultCallback, OnListFragmentInteractionListener{
     public OnListFragmentInteractionListener mListener;
     public int REQUEST_LOC = 200;
     public String[] perms = {"android.permission.ACCESS_FINE_LOCATION"};
@@ -132,17 +134,17 @@ public class MainNavDrawer extends AppCompatActivity
         }
 
         else if (id == R.id.nav_profile) {
-            fragmentClass = Profile.class;
-            setTitle("@string/Profile");
-        } else if (id == R.id.nav_manage) {
-            fragmentClass = Profile.class;
-            setTitle("@string/Settings");
+            fragmentClass = ProfileFragment.class;
+            setTitle("@string/ProfileFragment");
+        } else if (id == R.id.nav_market) {
+            fragmentClass = MarketFragment.class;
+            setTitle("@string/Market");
         } else if (id == R.id.nav_settings) {
-            fragmentClass = Profile.class;
-            setTitle("@string/Settings");
-        } else if (id == R.id.nav_login) {
+            fragmentClass = NewSpotFragment.class;
+            setTitle("@string/Market");
+        } else if (id == R.id.nav_logout) {
             fragmentClass = SpotFragment.class;
-            setTitle("@string/Login");
+            setTitle("@string/Logout");
         }
         try {
             fragment = (Fragment) fragmentClass.newInstance(); // Class type -> newInstance

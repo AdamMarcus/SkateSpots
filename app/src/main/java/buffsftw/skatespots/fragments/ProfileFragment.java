@@ -14,12 +14,12 @@ import com.example.buffsftw.skatespots.R;
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link Profile.OnFragmentInteractionListener} interface
+ * {@link ProfileFragment.OnFragmentInteractionListener} interface
  * to handle interaction events.
- * Use the {@link Profile#} factory method to
+ * Use the {@link ProfileFragment#} factory method to
  * create an instance of this fragment.
  */
-public class Profile extends Fragment {
+public class ProfileFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -34,8 +34,8 @@ public class Profile extends Fragment {
     // TODO: Rename and change types and number of parameters
 
     /*
-    public static Profile newInstance(String param1, String param2) {
-        Profile fragment = new Profile();
+    public static ProfileFragment newInstance(String param1, String param2) {
+        ProfileFragment fragment = new ProfileFragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);

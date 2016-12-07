@@ -60,7 +60,7 @@ public class WebRequest {
         /* Jack */
     }
 
-    public void setName(String name {
+    public void setName(String name) {
         /* Jack */
     }
 

@@ -63,6 +63,19 @@ public class WebRequest {
         return spotCollection;
     }
 
+    public void getNewSpot(int userID) {
+
+        /*
+        SELECT *
+        FROM spots
+       WHERE spots.spot_id NOT IN (SELECT spot_id from user_spot_collection where user_id = 2)
+
+         /* Jack*/
+
+        //SkateSpots.Spots newSpot = new SkateSpots.Spots();
+        //return newSpot;
+    }
+
 
     public int getTokenCount(int userID) {
         int tokenCount = 0;
@@ -115,25 +128,23 @@ public class WebRequest {
     }
 
 
-    public void addSpot(int spotID, double xCoordinate, double yCordinate, String country, String city, String state, String spotType, char spotDifficulty, int userID) {
+    public void addSpot(double xCoordinate, double yCoordinate, String country, String city, String state, String spotType, char spotDifficulty, int userID) {
         /*
-        INSERT INTO spots VALUES (spotID, xCoordinate, yCordinate, country, city, state, spotType, spotDifficulty);
-        INSERT INTO spot_stats VALUES (0, 0, 1, 0, 0, 0);
-        INSERT INTO user_spot_collection VALUES (userID, spotID);
-        INSERT INTO user_spot_contribution VALUES (userID, spotID);
-         */
+        INSERT INTO spots (x_coordinate, y_coordinate, country, city, state, spot_type, spot_difficulty) VALUES (xCoordinate, yCordinate, country, city, state, spotType, spotDifficulty);
+        INSERT INTO spot_stats VALUES ((SELECT spot_id FROM spots WHERE spots.x_coordinate = xCoordinate AND spots.y_coordinate = yCoordinate) , 0, 1, 0, 0, 0);
+        INSERT INTO user_spot_collection VALUES (userID, (SELECT spot_id FROM spots WHERE spots.x_coordinate = xCoordinate AND spots.y_coordinate = yCoordinate));
+        INSERT INTO user_spot_contribution VALUES (userID, (SELECT spot_id FROM spots WHERE spots.x_coordinate = xCoordinate AND spots.y_coordinate = yCoordinate));
+        */
 
 
         /* Jack */
     }
 
 
-    public void addUser(int userID, String userName, String userFirstName, String userPassword, String userEMail, int userRating, int tokenCount) {
+    public void addUser(String userName, String userFirstName, String userPassword, String userEMail, int userRating, int tokenCount) {
         /*
-        WARNING: Needs tested in database
-        INSERT INTO users VALUES (userID, userName, userFirstName, userPassword, userEmail, userRating, tokenCount);
+        INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES (userName, userFirstName, userPassword, userEmail, userRating, tokenCount);
         */
-
        /* Jack */
 
 

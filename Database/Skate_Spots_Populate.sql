@@ -56,14 +56,14 @@ CREATE TABLE user_spot_contribution (
 );
 GO
 /* Insert users */
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('TestUser', 'TestUserName', 'TestPassowrd', 'TestEmail@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('adam.awesome', 'Adam', 'password', 'adau3486@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('EnergeticEvan', 'Evan', 'csci3308' , 'evan.yin@colorado.edu' , 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('coolcarrie', 'Carrie', 'clubsports', 'cawa1436@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('FitFatin', 'Fatin', 'csci3308', 'Fatin.Kamaruzaman@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('JumpingJack', 'Jack', 'csci3308', 'Jackson.Panetta@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('SuperStering', 'Sterling', 'csci3308', 'Sterling.Vangeloff@colorado.edu', 5, 50);
-INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('BombBlake', 'Blake', 'csci3308', 'Blake.Galbavy@colorado.edu', 5, 50);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('TestUser', 'TestUserName', 'TestPassowrd', 'TestEmail@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('adam.awesome', 'Adam', 'password', 'adau3486@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('EnergeticEvan', 'Evan', 'csci3308' , 'evan.yin@colorado.edu' , 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('coolcarrie', 'Carrie', 'clubsports', 'cawa1436@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('FitFatin', 'Fatin', 'csci3308', 'Fatin.Kamaruzaman@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('JumpingJack', 'Jack', 'csci3308', 'Jackson.Panetta@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('SuperStering', 'Sterling', 'csci3308', 'Sterling.Vangeloff@colorado.edu', 5, 10);
+INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES ('BombBlake', 'Blake', 'csci3308', 'Blake.Galbavy@colorado.edu', 5, 10);
 GO
 /* Insert spots */
 INSERT INTO spots (x_coordinate, y_coordinate, country, city, state, spot_type, spot_difficulty) VALUES (40.005911, -105.263942, 'United States of America', 'Boulder', 'Colorado', 'Stair', 'Easy');
@@ -78,8 +78,6 @@ INSERT INTO spot_stats VALUES (3, 2, 1, 0, 0, 2);
 INSERT INTO spot_stats VALUES (4, 5, 2, 0, 0, 2);
 GO
 /* Store the spots users have in their collection */
-INSERT INTO user_spot_collection VALUES (0, 1);
-INSERT INTO user_spot_collection VALUES (0, 3);
 INSERT INTO user_spot_collection VALUES (1, 1);
 INSERT INTO user_spot_collection VALUES (1, 2);
 INSERT INTO user_spot_collection VALUES (1, 3);

@@ -160,7 +160,11 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/newLat"
+<<<<<<< HEAD
                 android:layout_weight="0.58"
+=======
+                android:layout_weight="1"
+>>>>>>> app-start
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
             <TextView
@@ -168,6 +172,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/newLong"
+<<<<<<< HEAD
                 android:layout_weight="0.58"
                 android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
 
@@ -178,6 +183,10 @@
                 android:id="@+id/button4"
                 android:background="@color/cornflower_blue"
                 android:layout_weight="0.15" />
+=======
+                android:layout_weight="1"
+                android:textAppearance="@style/TextAppearance.AppCompat.Body2" />
+>>>>>>> app-start
         </LinearLayout>
 
     </LinearLayout>

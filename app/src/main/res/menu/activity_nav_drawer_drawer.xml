@@ -23,7 +23,11 @@
     <item
         android:id="@+id/nav_settings"
         android:icon="@drawable/ic_menu_share"
+<<<<<<< HEAD
         android:title="New Spots" />
+=======
+        android:title="Settings" />
+>>>>>>> app-start
     <item
         android:id="@+id/nav_logout"
         android:icon="@drawable/ic_menu_send"

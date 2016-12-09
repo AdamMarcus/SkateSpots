@@ -114,8 +114,6 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="pages\home.aspx" />
-    <Content Include="pages\template.html" />
-    <Content Include="pages\test.aspx" />
     <Content Include="scripts\ai.0.15.0-build58334.js" />
     <Content Include="scripts\ai.0.15.0-build58334.min.js" />
     <Content Include="Web.config">
@@ -123,14 +121,7 @@
     </Content>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AppCode\TestHandler.cs" />
-    <Compile Include="pages\home.aspx.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="pages\home.aspx.designer.cs">
-      <DependentUpon>home.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="AppCode\UserInfoHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

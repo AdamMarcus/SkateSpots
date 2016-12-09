@@ -3,51 +3,106 @@ package buffsftw.skatespots;
 /**
  * Created by Jack on 11/16/2016.
  */
+ 
+import android.os.AsyncTask;
+import java.net.HttpURLConnection;
+import java.net.URL;
 
+ 
 public class WebRequest {
 
-    public int getUserId(String userEMail) {
-        int userID = 0;
+	// Task to make the request
+	// AsyncTask ensures it executes on a separate thread
+	class serverRequest extends AsyncTask<String,String,String> {
+		
+		private String urlString;
+		
+		public serverRequest(String urlString){
+			this.urlString = urlString;
+		}
+		
+		@Override protected String doInBackground(String...strings) {
+			try{
+				URL url = new URL(urlString);
+				HtppURLConnection urlConnection = (HttpUrlConnection) url.openConnection();
+				return urlConnection.getContent().toString();
+			} catch (Exception e) {
+				System.out.println(e.getMessage());
+			}
+			
+			return "";
+		}
+	}
 
-        return userID;
+	// Get userID query
+    public int getUserId(String userEMail) {
+		String response = "";
+		
+		serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_id&email=" + userEMail);
+		requset.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+
+        return Integer.parseInt(response);
     }
 
     public String getPassword(String userEMail) {
-        String password = "0";
+        String response = "";
 
         /*
         SELECT user_password FROM users WHERE user_email = userEMail;
         */
 
-        /* Jack */
-
-        return password;
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_pass&email=" + userEMail)
+		request.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        return response;
     }
 
 
     public String getName(int userID) {
-        String name = "0";
+        String response = "";
 
         /*
          SELECT user_first_name FROM users WHERE user_id = userID;
          */
 
-        /* Jack */
-
-        return name;
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_name&uid=" + userID)
+		request.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        return response;
     }
 
 
     public String getUserName(int userID) {
-        String userName = "0";
+        String response = "";
 
        /*
        SELECT user_name FROM users WHERE user_id = userID;
        */
 
-        /* Jack */
-
-        return userName;
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_uname&uid=" + userID)
+		request.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        return response;
     }
 
 
@@ -63,30 +118,44 @@ public class WebRequest {
         return spotCollection;
     }
 
-    public void getNewSpot(int userID) {
-
+    public getNewSpot(int userID) {
+		String response = "";
+	
         /*
         SELECT *
         FROM spots
-       WHERE spots.spot_id NOT IN (SELECT spot_id from user_spot_collection where user_id = 2)
-
-         /* Jack*/
-
-        //SkateSpots.Spots newSpot = new SkateSpots.Spots();
-        //return newSpot;
+		WHERE spots.spot_id NOT IN (SELECT spot_id from user_spot_collection where user_id = userID)
+		*/
+		
+	    serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_spot&uid=" + userID)
+		request.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        return response;
+        
     }
 
 
     public int getTokenCount(int userID) {
-        int tokenCount = 0;
+        String response = "";
 
         /*
         SELECT token_count FROM users WHERE user_id = userID;
         */
 
-        /* Jack */
-
-        return tokenCount;
+	    serverRequest request = new ServerRequest("http://skatespots.live/user?a=get_token&uid=" + userID)
+		request.execute();
+		try {
+			response = request.get();
+		} catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+		
+        return Integer.parseInt(response);
     }
 
 
@@ -96,8 +165,10 @@ public class WebRequest {
         UPDATE users SET user_password = 'NEWPASSWORD' where user_id = userID;
         */
 
-        /* Jack */
-    }
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=set_pass&uid=" + userID + "&pass=" + password)
+		request.execute();
+		return;
+	}
 
 
     public void setName(String name, int userID) {
@@ -105,7 +176,9 @@ public class WebRequest {
         UPDATE users SET user_first_name = 'NEWNAME' WHERE user_id = userID;
         */
 
-        /* Jack */
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=set_name&uid=" + userID + "&name=" + name)
+		request.execute();
+		return;
     }
 
 
@@ -114,8 +187,9 @@ public class WebRequest {
         UPDATE users SET user_name = 'NEWUSERNAME' WHERE user_id = userID;
         */
 
-
-       /* Jack */
+        serverRequest request = new ServerRequest("http://skatespots.live/user?a=set_uname&uid=" + userID + "&uname=" + userName)
+		request.execute();
+		return;
     }
 
 
@@ -124,7 +198,9 @@ public class WebRequest {
         UPDATE users SET token_count = tokenCount WHERE user_id = userID;
        */
 
-       /* Jack */
+	    serverRequest request = new ServerRequest("http://skatespots.live/user?a=set_token&uid=" + userID + "&token=" + tokenCount)
+		request.execute();
+		return;
     }
 
 
@@ -136,18 +212,21 @@ public class WebRequest {
         INSERT INTO user_spot_contribution VALUES (userID, (SELECT spot_id FROM spots WHERE spots.x_coordinate = xCoordinate AND spots.y_coordinate = yCoordinate));
         */
 
-
-        /* Jack */
+		serverRequest request = new ServerRequest("http://skatespots.live/user?a=add_spot&uid=" + userID + "&x=" + xCoordinate + "&y=" + yCoordinate + "&country=" + country + "&city=" 
+			+ city + "&state=" + state + "&type=" + spotType + "&diff=" + spotDifficulty);
+		request.execute();
+		return;
     }
 
 
-    public void addUser(String userName, String userFirstName, String userPassword, String userEMail, int userRating, int tokenCount) {
+    public void addUser(String userName, String userFirstName, String userPassword, String userEMail) {
         /*
         INSERT INTO users (user_name, user_first_name, user_password, user_email, user_rating, token_count) VALUES (userName, userFirstName, userPassword, userEmail, userRating, tokenCount);
         */
-       /* Jack */
-
-
+       
+		serverRequest request = new ServerRequest("http://skatespots.live/user?a=add_user&uid=" + userID + "&uname=" + userName + "&name=" + userFirstName + "&pass=" + userPassword + "&email=" + userEmail)
+		request.execute();
+		return;
     }
 
 
